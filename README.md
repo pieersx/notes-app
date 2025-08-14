@@ -88,5 +88,3 @@ npm test
 cd frontend
 npm run cypress:open
 ```
-
-⭐ Si te gusta este proyecto, ¡dale una estrella en [GitHub](https://github.com/pieersx/notes-app)!

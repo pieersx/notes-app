@@ -5,11 +5,11 @@
   "main": "server.js",
   "type": "commonjs",
   "scripts": {
-    "start": "cross-env NODE_ENV=production node server.js",
-    "dev": "cross-env NODE_ENV=development nodemon server.js",
-    "test": "cross-env NODE_ENV=test jest --verbose --runInBand",
+    "start": "NODE_ENV=production node server.js",
+    "dev": "NODE_ENV=development nodemon server.js",
+    "test": "NODE_ENV=test jest --verbose --runInBand",
     "test:watch": "npm run test -- --watch",
-    "start:test": "cross-env NODE_ENV=test node server.js"
+    "start:test": "NODE_ENV=test node server.js"
   },
   "keywords": [],
   "author": "",

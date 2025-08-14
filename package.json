@@ -8,10 +8,18 @@
   ],
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "build": "npm run build --workspace=frontend",
+    "build": "npm run build --workspace=frontend && cp -r ./frontend/dist ./backend/public",
     "start": "npm run start --workspace=backend",
-    "dev:api": "npm run build && npm run dev --workspace=backend"
+    "dev": "npm run -ws --if-present dev",
+    "dev:backend": "npm run dev -w backend",
+    "dev:frontend": "npm run dev -w frontend",
+    "lint": "eslint ./backend ./frontend",
+    "dev:api": "npm run build && npm run dev -w backend"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "keywords": [],
   "author": "",
@@ -20,7 +28,7 @@
     "@eslint/js": "^9.33.0",
     "eslint": "^9.33.0",
     "eslint-plugin-cypress": "^5.1.0",
-    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.16",
     "globals": "^16.3.0"

@@ -1,5 +1,6 @@
 const cors = require('cors')
 const express = require('express')
+const path = require('path')
 const notesRouter = require('./controllers/notes')
 const usersRouter = require('./controllers/users')
 const loginRouter = require('./controllers/login')
@@ -18,7 +19,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 app.use(requestLogger)
-app.use(express.static('../frontend/dist'))
+app.use(express.static(path.join(__dirname, 'public')))
 
 // Ruta de bienvenida
 app.get('/', (req, res) => {
@@ -34,6 +35,11 @@ if (process.env.NODE_ENV === 'test') {
   const testingRouter = require('./controllers/testing')
   app.use('/api/testing', testingRouter)
 }
+
+// Servir el frontend para cualquier ruta que no sea API
+app.get('*', (res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'))
+})
 
 // Middleware para manejar rutas no encontradas y errores
 app.use(unknownEndpoint)
