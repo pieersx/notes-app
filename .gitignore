@@ -1,0 +1,15 @@
+# Dependencias
+node_modules/
+.env
+
+# frontend
+frontend/node_modules/
+frontend/dist/
+frontend/cypress/videos/
+frontend/cypress/screenshots/
+frontend/coverage/
+
+# backend
+backend/node_modules/
+backend/api.http
+backend/.env*
