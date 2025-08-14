@@ -37,8 +37,11 @@ if (process.env.NODE_ENV === 'test') {
 }
 
 // Servir el frontend para cualquier ruta que no sea API
-app.get('*', (res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'))
+app.use((req, res, next) => {
+  if (req.method === 'GET' && !req.path.startsWith('/api')) {
+    return res.sendFile(path.join(__dirname, 'public', 'index.html'))
+  }
+  next()
 })
 
 // Middleware para manejar rutas no encontradas y errores
